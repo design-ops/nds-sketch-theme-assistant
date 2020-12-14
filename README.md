@@ -1,16 +1,26 @@
-# sketch-assistant-template
+# NDS Sketch Assistants
 
-> 💁‍♀️ This repository contains a starter project for developing a new Assistant.
+These are a set of Sketch Assistants for use with the NDS.
 
-👉
-[Click here to generate a new project using this repository as a template](https://github.com/sketch-hq/sketch-assistant-template/generate)
+## Primary Rules
 
-## Getting started
+### Theme file rules
+1. **DONE:** 🛑 Error: Find Duplicate **Symbols**, **Text & Layer Styles**
+1. **DONE:** 🛑 Error: **Token** must always have a default. Example:
+	1. if `navbar/background` exists, `background` is required
+	2. if `navbar/button-primary/title` exists, `title` is required
+1. 🛑 Error: Symbols with a modifier extension must contain only one layer.
+	1. `--radius` extension requires a single Rectangle shape layer.
+1. 🛑 Error: All Text layers must be linked to a shared Text Style
+1. 🛑 Error: All Shape layers must be linked to a shared Layer Style
 
-For in-depth guides head over to the [Sketch Developer](https://developer.sketch.com/assistants/)
-site.
+### UI Components
+1. 🛑 Error: Name of the layer must match the style
+1. 🛑 Error: Component names must begin with `_`
 
-- [Getting started](https://developer.sketch.com/assistants/getting-started)
-- [Write a rule](https://developer.sketch.com/assistants/write-a-rule)
-- [Publishing](https://developer.sketch.com/assistants/publish)
-- And more!
+
+### UI Layout
+1. 🛑 Error: Artboard names must follow the pattern `Section Name - Description`
+1. 🛑 Error: Local layer styles not permitted
+1. 🛑 Error: Local text styles not permitted
+1. ⚠️ Warning: Local symbols not advised
