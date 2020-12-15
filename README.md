@@ -12,7 +12,7 @@ These are a set of Sketch Assistants for use with the NDS.
 1. **DONE:** 🛑 Error: Symbols with a modifier extension must contain only one layer.
 	1. `--radius` extension requires a single Rectangle shape layer.
 1. **DONE:** 🛑 Error: All Text & Layers must be synced to a their Shared Styles
-1. ⚠️ Warning: Fonts must be embedded
+1. ⚠️ Warning: Prefer embedded fonts
 
 ### UI Components
 1. 🛑 Error: Name of the layer must match the style
