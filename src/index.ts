@@ -23,7 +23,6 @@ const duplicateLayerStyles: RuleDefinition = {
     }
 
     totalDuplicates = duplicates.filter((element) => element.number > 1);
-
     totalDuplicates.forEach(element => context.utils.report('• \'' + element.name + '\' has a duplicate layer style'));
 
   },
@@ -91,7 +90,7 @@ const duplicateSymbols: RuleDefinition = {
   description: 'Reports duplicate symbols in your NDS theme file.',
 }
 
-const defaultLayerTokens: RuleDefinition = {
+const defaultLayerStyle: RuleDefinition = {
   rule: async (context) => {
 
     interface Tokens {
@@ -138,12 +137,12 @@ const defaultLayerTokens: RuleDefinition = {
     }
 
   },
-  name: 'nds-sketch-theme-assistant/default-layer-tokens',
-  title: 'Default Layer Tokens',
-  description: 'Reports missing default layer style tokens in your NDS theme file.',
+  name: 'nds-sketch-theme-assistant/default-layer-style',
+  title: 'Default Layer Style',
+  description: 'Reports missing default layer style in your NDS theme file.',
 }
 
-const defaultTextTokens: RuleDefinition = {
+const defaultTextStyle: RuleDefinition = {
   rule: async (context) => {
 
     interface Tokens {
@@ -190,12 +189,12 @@ const defaultTextTokens: RuleDefinition = {
     }
 
   },
-  name: 'nds-sketch-theme-assistant/default-text-tokens',
-  title: 'Default Text Tokens',
-  description: 'Reports missing default text style tokens in your NDS theme file.',
+  name: 'nds-sketch-theme-assistant/default-text-style',
+  title: 'Default Text Style',
+  description: 'Reports missing default text style in your NDS theme file.',
 }
 
-const defaultSymbolTokens: RuleDefinition = {
+const defaultSymbol: RuleDefinition = {
   rule: async (context) => {
 
     interface Tokens {
@@ -243,9 +242,9 @@ const defaultSymbolTokens: RuleDefinition = {
     }
 
   },
-  name: 'nds-sketch-theme-assistant/default-symbol-tokens',
-  title: 'Default Symbol Tokens',
-  description: 'Reports missing default symbol tokens in your NDS theme file.',
+  name: 'nds-sketch-theme-assistant/default-symbol',
+  title: 'Default Symbol',
+  description: 'Reports missing default symbol in your NDS theme file.',
 }
 
 const modifierFormat: RuleDefinition = {
@@ -295,9 +294,6 @@ const syncLayerStyles: RuleDefinition = {
       if (!layer.style || !utils.styleEq(layer.style, sharedStyle.value)) {
         context.utils.report('• \''+ sharedStyle.name + '\' shared style on \''+ layer.name +'\' is out of sync')
       }
-      // if (sharedStyle.name != layer.name) {
-      //   context.utils.report('• \''+ sharedStyle.name + '\' BLAH \''+ layer.name +'\' is out of sync')
-      // }
     }
 
   },
@@ -326,9 +322,6 @@ const syncTextStyles: RuleDefinition = {
       if (!utils.textStyleEq(text.style, sharedStyle.value)) {
         context.utils.report('• \''+ sharedStyle.name + '\' shared style on \''+ text.name +'\' is out of sync')
       }
-      // if (sharedStyle.name != text.name) {
-      //   context.utils.report('• \''+ sharedStyle.name + '\' BLAH \''+ text.name +'\' is out of sync')
-      // }
     }
 
   },
@@ -344,9 +337,9 @@ const assistant: AssistantPackage = async () => {
       duplicateLayerStyles,
       duplicateTextStyles,
       duplicateSymbols,
-      defaultLayerTokens,
-      defaultTextTokens,
-      defaultSymbolTokens,
+      defaultLayerStyle,
+      defaultTextStyle,
+      defaultSymbol,
       modifierFormat,
       syncLayerStyles,
       syncTextStyles
@@ -356,9 +349,9 @@ const assistant: AssistantPackage = async () => {
         'nds-sketch-theme-assistant/duplicate-layer-styles': { active: true },
         'nds-sketch-theme-assistant/duplicate-text-styles': { active: true },
         'nds-sketch-theme-assistant/duplicate-symbols': { active: true },
-        'nds-sketch-theme-assistant/default-layer-tokens': { active: true },
-        'nds-sketch-theme-assistant/default-text-tokens': { active: true },
-        'nds-sketch-theme-assistant/default-symbol-tokens': { active: true },
+        'nds-sketch-theme-assistant/default-layer-style': { active: true },
+        'nds-sketch-theme-assistant/default-text-style': { active: true },
+        'nds-sketch-theme-assistant/default-symbol': { active: true },
         'nds-sketch-theme-assistant/modifier-format': { active: true },
         'nds-sketch-theme-assistant/sync-layer-styles': { active: true },
         'nds-sketch-theme-assistant/sync-text-styles': { active: true },
