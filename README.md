@@ -9,10 +9,9 @@ These are a set of Sketch Assistants for use with the NDS.
 1. **DONE:** 🛑 Error: **Token** must always have a default. Example:
 	1. if `navbar/background` exists, `background` is required
 	2. if `navbar/button-primary/title` exists, `title` is required
-1. 🛑 Error: Symbols with a modifier extension must contain only one layer.
+1. **DONE:** 🛑 Error: Symbols with a modifier extension must contain only one layer.
 	1. `--radius` extension requires a single Rectangle shape layer.
-1. 🛑 Error: All Text layers must be linked to a shared Text Style
-1. 🛑 Error: All Shape layers must be linked to a shared Layer Style
+1. **DONE:** 🛑 Error: All Text & Layers must be synced to a their Shared Styles
 
 ### UI Components
 1. 🛑 Error: Name of the layer must match the style

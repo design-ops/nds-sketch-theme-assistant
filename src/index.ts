@@ -1,4 +1,5 @@
 import { AssistantPackage, RuleDefinition } from '@sketch-hq/sketch-assistant-types'
+import FileFormat from '@sketch-hq/sketch-file-format-ts'
 
 const duplicateLayerStyles: RuleDefinition = {
   rule: async (context) => {
@@ -247,10 +248,109 @@ const defaultSymbolTokens: RuleDefinition = {
   description: 'Reports missing default symbol tokens in your NDS theme file.',
 }
 
+const modifierFormat: RuleDefinition = {
+  rule: async (context) => {
+
+    for (const symbol of context.utils.objects.symbolMaster) {
+      if (symbol.name != null && symbol.name.match(/.*? \-\-[^\s]+$/gm)) { // match naming scheme ' --modifier'
+
+        var numberOfLayers = symbol.layers.length;
+        if (numberOfLayers > 1) {
+          context.utils.report('• \'' + symbol.name + '\' modifier has too many (' + numberOfLayers + ') layers');
+        }
+        if (numberOfLayers < 1 ) {
+          context.utils.report('• \'' + symbol.name + '\' modifier requires a single layer');
+        }
+
+      }
+    }
+
+  },
+  name: 'nds-sketch-theme-assistant/modifier-format',
+  title: 'Modifier Format',
+  description: 'Reports if a modifier has more than one or less than one layer.',
+}
+
+const syncLayerStyles: RuleDefinition = {
+  rule: async (context) => {
+
+    const IGNORE_CLASSES = ['artboard', 'page', 'symbolMaster', 'text']
+    type StyleId = string
+
+    const { utils } = context
+    const sharedStyles: Map<StyleId, FileFormat.SharedStyle> = new Map()
+
+    for (const sharedStyle of utils.objects.sharedStyle) {
+      if (typeof sharedStyle.do_objectID === 'string') {
+        sharedStyles.set(sharedStyle.do_objectID, sharedStyle)
+      }
+    }
+
+    for (const layer of utils.objects.anyLayer) {
+      if (IGNORE_CLASSES.includes(layer._class)) continue // Ignore certain classes
+      if (layer._class === 'group' && !layer.style?.shadows?.length) continue // Ignore groups with default styles
+      if (typeof layer.sharedStyleID !== 'string') continue // Ignore if no shared style id
+      const sharedStyle = sharedStyles.get(layer.sharedStyleID)
+      if (!sharedStyle) continue // Ignore if shared style not found
+      if (!layer.style || !utils.styleEq(layer.style, sharedStyle.value)) {
+        context.utils.report('• \''+ sharedStyle.name + '\' shared style on \''+ layer.name +'\' is out of sync')
+      }
+      // if (sharedStyle.name != layer.name) {
+      //   context.utils.report('• \''+ sharedStyle.name + '\' BLAH \''+ layer.name +'\' is out of sync')
+      // }
+    }
+
+  },
+  name: 'nds-sketch-theme-assistant/sync-layer-styles',
+  title: 'Layer Style is Out of Sync',
+  description: 'Reports if a layer style is out of sync with the shared style.',
+}
+
+const syncTextStyles: RuleDefinition = {
+  rule: async (context) => {
+
+    type StyleId = string
+    const { utils } = context
+    const sharedStyles: Map<StyleId, FileFormat.SharedStyle> = new Map()
+
+    for (const sharedStyle of utils.objects.sharedStyle) {
+      if (typeof sharedStyle.do_objectID === 'string') {
+        sharedStyles.set(sharedStyle.do_objectID, sharedStyle)
+      }
+    }
+
+    for (const text of utils.objects.text) {
+      if (typeof text.sharedStyleID !== 'string') continue
+      const sharedStyle = sharedStyles.get(text.sharedStyleID)
+      if (!sharedStyle) continue
+      if (!utils.textStyleEq(text.style, sharedStyle.value)) {
+        context.utils.report('• \''+ sharedStyle.name + '\' shared style on \''+ text.name +'\' is out of sync')
+      }
+      // if (sharedStyle.name != text.name) {
+      //   context.utils.report('• \''+ sharedStyle.name + '\' BLAH \''+ text.name +'\' is out of sync')
+      // }
+    }
+
+  },
+  name: 'nds-sketch-theme-assistant/sync-text-styles',
+  title: 'Text Style is Out of Sync',
+  description: 'Reports if a text style is out of sync with the shared style.',
+}
+
 const assistant: AssistantPackage = async () => {
   return {
     name: 'nds-sketch-theme-assistant',
-    rules: [duplicateLayerStyles, duplicateTextStyles, duplicateSymbols, defaultLayerTokens, defaultTextTokens, defaultSymbolTokens],
+    rules: [
+      duplicateLayerStyles,
+      duplicateTextStyles,
+      duplicateSymbols,
+      defaultLayerTokens,
+      defaultTextTokens,
+      defaultSymbolTokens,
+      modifierFormat,
+      syncLayerStyles,
+      syncTextStyles
+    ],
     config: {
       rules: {
         'nds-sketch-theme-assistant/duplicate-layer-styles': { active: true },
@@ -259,6 +359,9 @@ const assistant: AssistantPackage = async () => {
         'nds-sketch-theme-assistant/default-layer-tokens': { active: true },
         'nds-sketch-theme-assistant/default-text-tokens': { active: true },
         'nds-sketch-theme-assistant/default-symbol-tokens': { active: true },
+        'nds-sketch-theme-assistant/modifier-format': { active: true },
+        'nds-sketch-theme-assistant/sync-layer-styles': { active: true },
+        'nds-sketch-theme-assistant/sync-text-styles': { active: true },
       },
     },
   }
