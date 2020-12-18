@@ -1,6 +1,6 @@
 import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
 
-export const defaultLayerStyle: RuleDefinition = {
+export const defaultTextStyles: RuleDefinition = {
   rule: async (context) => {
 
     interface Tokens {
@@ -15,7 +15,7 @@ export const defaultLayerStyle: RuleDefinition = {
     var defaultTokens: Array<Tokens> = [];
 
     for (const style of context.utils.objects.sharedStyle) {
-      if (style.value.textStyle == undefined) {
+      if (style.value.textStyle != undefined) {
 
         tokenParts = style.name.split('/');
         var tokenName = tokenParts.slice(-1).toString();
@@ -41,13 +41,13 @@ export const defaultLayerStyle: RuleDefinition = {
     for (const token of tokens) {
       var existingElement = defaultTokens.find((element) => element.token == token.token);
       if (existingElement == null) {
-        context.utils.report('• \'' + token.token + '\' is missing a default layer style');
+        context.utils.report('• \'' + token.token + '\' is missing a default text style');
       }
 
     }
 
   },
-  name: 'nds-sketch-theme-assistant/default-layer-style',
-  title: 'Default Layer Style',
-  description: 'Reports missing default layer style in your NDS theme file.',
+  name: 'nds-sketch-theme-assistant/default-text-styles',
+  title: 'Default Text Styles',
+  description: 'Reports missing default text styles in your NDS theme file.',
 }

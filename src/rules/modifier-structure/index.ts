@@ -1,6 +1,6 @@
 import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
 
-export const modifierFormat: RuleDefinition = {
+export const modifierStructure: RuleDefinition = {
   rule: async (context) => {
 
     for (const symbol of context.utils.objects.symbolMaster) {
@@ -18,7 +18,7 @@ export const modifierFormat: RuleDefinition = {
     }
 
   },
-  name: 'nds-sketch-theme-assistant/modifier-format',
-  title: 'Modifier Format',
+  name: 'nds-sketch-theme-assistant/modifier-structure',
+  title: 'Modifier Structure',
   description: 'Reports if a modifier has more than one or less than one layer.',
 }

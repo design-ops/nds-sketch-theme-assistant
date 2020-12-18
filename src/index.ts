@@ -3,15 +3,15 @@ import { AssistantPackage } from '@sketch-hq/sketch-assistant-types'
 import { duplicateLayerStyles } from './rules/duplicate-layer-styles'
 import { duplicateTextStyles } from './rules/duplicate-text-styles'
 import { duplicateSymbols } from './rules/duplicate-symbols'
-import { defaultLayerStyle } from './rules/default-layer-style'
-import { defaultTextStyle } from './rules/default-text-style'
-import { defaultSymbol } from './rules/default-symbol'
-import { modifierFormat } from './rules/modifier-format'
+import { defaultLayerStyles } from './rules/default-layer-styles'
+import { defaultTextStyles } from './rules/default-text-styles'
+import { defaultSymbols } from './rules/default-symbols'
+import { modifierStructure } from './rules/modifier-structure'
 import { syncLayerStyles } from './rules/sync-layer-styles'
 import { syncTextStyles } from './rules/sync-text-styles'
-import { layerStyleName } from './rules/layer-style-name'
-import { textStyleName } from './rules/text-style-name'
-import { symbolName } from './rules/symbol-name'
+import { layerStyleNames } from './rules/layer-style-names'
+import { textStyleNames } from './rules/text-style-names'
+import { symbolNames } from './rules/symbol-names'
 import { embedFonts } from './rules/embed-fonts'
 
 const assistant: AssistantPackage = async () => {
@@ -21,15 +21,15 @@ const assistant: AssistantPackage = async () => {
       duplicateLayerStyles,
       duplicateTextStyles,
       duplicateSymbols,
-      defaultLayerStyle,
-      defaultTextStyle,
-      defaultSymbol,
-      modifierFormat,
+      defaultLayerStyles,
+      defaultTextStyles,
+      defaultSymbols,
+      modifierStructure,
       syncLayerStyles,
       syncTextStyles,
-      symbolName,
-      layerStyleName,
-      textStyleName,
+      symbolNames,
+      layerStyleNames,
+      textStyleNames,
       embedFonts,
     ],
     config: {
@@ -37,15 +37,15 @@ const assistant: AssistantPackage = async () => {
         'nds-sketch-theme-assistant/duplicate-layer-styles': { active: true },
         'nds-sketch-theme-assistant/duplicate-text-styles': { active: true },
         'nds-sketch-theme-assistant/duplicate-symbols': { active: true },
-        'nds-sketch-theme-assistant/default-layer-style': { active: true },
-        'nds-sketch-theme-assistant/default-text-style': { active: true },
-        'nds-sketch-theme-assistant/default-symbol': { active: true },
-        'nds-sketch-theme-assistant/modifier-format': { active: true },
+        'nds-sketch-theme-assistant/default-layer-styles': { active: true },
+        'nds-sketch-theme-assistant/default-text-styles': { active: true },
+        'nds-sketch-theme-assistant/default-symbols': { active: true },
+        'nds-sketch-theme-assistant/modifier-structure': { active: true },
         'nds-sketch-theme-assistant/sync-layer-styles': { active: true },
         'nds-sketch-theme-assistant/sync-text-styles': { active: true },
-        'nds-sketch-theme-assistant/symbol-name': { active: true },
-        'nds-sketch-theme-assistant/layer-style-name': { active: true },
-        'nds-sketch-theme-assistant/text-style-name': { active: true },
+        'nds-sketch-theme-assistant/symbol-names': { active: true },
+        'nds-sketch-theme-assistant/layer-style-names': { active: true },
+        'nds-sketch-theme-assistant/text-style-names': { active: true },
         'nds-sketch-theme-assistant/embed-fonts': { active: true },
       },
     },

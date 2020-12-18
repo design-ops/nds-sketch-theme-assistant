@@ -1,6 +1,6 @@
 import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
 
-export const defaultSymbol: RuleDefinition = {
+export const defaultSymbols: RuleDefinition = {
   rule: async (context) => {
 
     interface Tokens {
@@ -39,7 +39,7 @@ export const defaultSymbol: RuleDefinition = {
     }
 
   },
-  name: 'nds-sketch-theme-assistant/default-symbol',
-  title: 'Default Symbol',
-  description: 'Reports missing default symbol in your NDS theme file.',
+  name: 'nds-sketch-theme-assistant/default-symbols',
+  title: 'Default Symbols',
+  description: 'Reports missing default symbols in your NDS theme file.',
 }

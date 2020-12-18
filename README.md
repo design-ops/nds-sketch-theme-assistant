@@ -1,18 +1,25 @@
-# NDS Sketch Assistants
+# NDS Sketch theme assistant
 
-These are a set of Sketch Assistants for use with the NDS.
+This Sketch Assistant is to be used when designing theme files for the Natural Design System. The Assistant performs the following checks on your theme file:
 
-## Primary Rules
+## Rules
 
-### Theme file rules
-1. **DONE:** 🛑 Error: Find Duplicate **Symbols**, **Text & Layer Styles**
-1. **DONE:** 🛑 Error: **Token** must always have a default. Example:
-	1. if `navbar/background` exists, `background` is required
-	2. if `navbar/button-primary/title` exists, `title` is required
-1. **DONE:** 🛑 Error: Symbols with a modifier extension must contain only one layer.
-	1. `--radius` extension requires a single Rectangle shape layer.
-1. **DONE:** 🛑 Error: All Text & Layers must be synced to a their Shared Styles
-1. ⚠️ Warning: Prefer embedded fonts
+1. [Duplicate symbols](./src/rules/duplicate-symbols)
+* [Duplicate layer styles](./src/rules/duplicate-layer-styles)
+* [Duplicate text styles](./src/rules/duplicate-text-styles)
+* [Default symbols](./src/rules/default-symbols)
+* [Default layer styles](./src/rules/default-layer-styles)
+* [Default text styles](./src/rules/default-text-styles)
+* [Sync layer styles](./src/rules/sync-layer-styles)
+* [Sync text styles](./src/rules/sync-text-styles)
+* [Symbol names](./src/rules/symbol-names)
+* [Layer style names](./src/rules/layer-style-names)
+* [Text style names](./src/rules/text-style-names)
+* [Modifier structure](./src/rules/modifier-structure)
+* [Embedded fonts](./src/rules/embed-fonts)
+
+
+
 
 ### UI Components
 1. 🛑 Error: Name of the layer must match the style

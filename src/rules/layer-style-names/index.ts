@@ -1,6 +1,6 @@
 import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
 
-export const layerStyleName: RuleDefinition = {
+export const layerStyleNames: RuleDefinition = {
   rule: async (context) => {
 
     for (const sharedStyle of context.utils.objects.sharedStyle) {
@@ -14,7 +14,7 @@ export const layerStyleName: RuleDefinition = {
     }
 
   },
-  name: 'nds-sketch-theme-assistant/layer-style-name',
-  title: 'Layer Style Name',
+  name: 'nds-sketch-theme-assistant/layer-style-names',
+  title: 'Layer Style Names',
   description: 'Reports an improperly named layer style in your NDS theme file.',
 }

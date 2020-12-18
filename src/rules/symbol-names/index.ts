@@ -1,6 +1,6 @@
 import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
 
-export const symbolName: RuleDefinition = {
+export const symbolNames: RuleDefinition = {
   rule: async (context) => {
     for (const symbol of context.utils.objects.symbolMaster) {
       if (symbol.name == null || symbol.name == " ") {
@@ -11,7 +11,7 @@ export const symbolName: RuleDefinition = {
       }
     }
   },
-  name: 'nds-sketch-theme-assistant/symbol-name',
-  title: 'Symbol Name',
+  name: 'nds-sketch-theme-assistant/symbol-names',
+  title: 'Symbol Names',
   description: 'Reports an improperly named symbol in your NDS theme file.',
 }
