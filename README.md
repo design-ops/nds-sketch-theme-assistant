@@ -4,7 +4,7 @@ This Sketch Assistant is to be used when designing theme files for the Natural D
 
 ## Rules
 
-1. [Duplicate symbols](./src/rules/duplicate-symbols)
+*. [Duplicate symbols](./src/rules/duplicate-symbols)
 * [Duplicate layer styles](./src/rules/duplicate-layer-styles)
 * [Duplicate text styles](./src/rules/duplicate-text-styles)
 * [Default symbols](./src/rules/default-symbols)
