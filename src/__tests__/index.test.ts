@@ -69,8 +69,8 @@ test('Modifier format', async () => {
     Assistant,
     "nds-sketch-theme-assistant/modifier-format"
   )
-  expect(violations[0].message).toBe("• 'background --radius' modifier has too many (2) layers")
-  expect(violations[1].message).toBe("• 'header/background --radius' modifier requires a single layer")
+  expect(violations[0].message).toBe("'background --radius' modifier has too many (2) layers")
+  expect(violations[1].message).toBe("'header/background --radius' modifier requires a single layer")
   expect(violations).toHaveLength(2)
 })
 
@@ -80,7 +80,7 @@ test('Sync layer styles', async () => {
     Assistant,
     "nds-sketch-theme-assistant/sync-layer-styles"
   )
-  expect(violations[0].message).toBe("• 'background' shared style on 'Rectangle' is out of sync")
+  expect(violations[0].message).toBe("'background' shared style on 'Rectangle' is out of sync")
   expect(violations).toHaveLength(1)
 })
 
@@ -90,6 +90,37 @@ test('Sync text styles', async () => {
     Assistant,
     "nds-sketch-theme-assistant/sync-text-styles"
   )
-  expect(violations[0].message).toBe("• 'title' shared style on 'Title' is out of sync")
+  expect(violations[0].message).toBe("'title' shared style on 'Title' is out of sync")
+  expect(violations).toHaveLength(1)
+})
+
+test('Symbol name', async () => {
+  const { violations } = await testRuleInAssistant(
+    resolve(__dirname, './symbol-name.sketch'),
+    Assistant,
+    "nds-sketch-theme-assistant/symbol-name"
+  )
+  expect(violations[0].message).toBe('Woops! Symbol name cannot be a "/"')
+  expect(violations[1].message).toBe('Woops! Symbol name cannot be left blank')
+  expect(violations).toHaveLength(2)
+})
+
+test('Text style name', async () => {
+  const { violations } = await testRuleInAssistant(
+    resolve(__dirname, './text-style-name.sketch'),
+    Assistant,
+    "nds-sketch-theme-assistant/text-style-name"
+  )
+  expect(violations[0].message).toBe('Woops! Text Style name cannot be left blank')
+  expect(violations).toHaveLength(1)
+})
+
+test('Layer style name', async () => {
+  const { violations } = await testRuleInAssistant(
+    resolve(__dirname, './layer-style-name.sketch'),
+    Assistant,
+    "nds-sketch-theme-assistant/layer-style-name"
+  )
+  expect(violations[0].message).toBe('Woops! Layer Style name cannot be left blank')
   expect(violations).toHaveLength(1)
 })
