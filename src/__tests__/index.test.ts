@@ -124,3 +124,13 @@ test('Layer style name', async () => {
   expect(violations[0].message).toBe('Woops! Layer Style name cannot be left blank')
   expect(violations).toHaveLength(1)
 })
+
+test('Embed Font', async () => {
+  const { violations } = await testRuleInAssistant(
+    resolve(__dirname, './embed-fonts.sketch'),
+    Assistant,
+    "nds-sketch-theme-assistant/embed-fonts"
+  )
+  expect(violations[0].message).toBe("'SF Pro Display' font is not embedded")
+  expect(violations).toHaveLength(1)
+})

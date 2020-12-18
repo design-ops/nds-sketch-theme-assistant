@@ -12,6 +12,7 @@ import { syncTextStyles } from './rules/sync-text-styles'
 import { layerStyleName } from './rules/layer-style-name'
 import { textStyleName } from './rules/text-style-name'
 import { symbolName } from './rules/symbol-name'
+import { embedFonts } from './rules/embed-fonts'
 
 const assistant: AssistantPackage = async () => {
   return {
@@ -29,6 +30,7 @@ const assistant: AssistantPackage = async () => {
       symbolName,
       layerStyleName,
       textStyleName,
+      embedFonts,
     ],
     config: {
       rules: {
@@ -44,6 +46,7 @@ const assistant: AssistantPackage = async () => {
         'nds-sketch-theme-assistant/symbol-name': { active: true },
         'nds-sketch-theme-assistant/layer-style-name': { active: true },
         'nds-sketch-theme-assistant/text-style-name': { active: true },
+        'nds-sketch-theme-assistant/embed-fonts': { active: true },
       },
     },
   }
