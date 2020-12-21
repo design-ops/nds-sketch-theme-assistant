@@ -17,10 +17,3 @@ This Sketch Assistant is to be used when designing theme files for the Natural D
 * [Text style names](./src/rules/text-style-names)
 * [Modifier structure](./src/rules/modifier-structure)
 * [Embedded fonts](./src/rules/embed-fonts)
-
-
-### UI Layout
-1. 🛑 Error: Artboard names must follow the pattern `Section Name - Description`
-1. 🛑 Error: Local layer styles not permitted
-1. 🛑 Error: Local text styles not permitted
-1. ⚠️ Warning: Local symbols not advised
