@@ -9,7 +9,7 @@ test('Duplicate layer styles', async () => {
     Assistant,
     "nds-sketch-theme-assistant/duplicate-layer-styles"
   )
-  expect(violations[0].message).toBe("• 'background' has a duplicate layer style")
+  expect(violations[0].message).toBe("'background' has a duplicate layer style")
   expect(violations).toHaveLength(1)
 })
 
@@ -19,7 +19,7 @@ test('Duplicate text styles', async () => {
     Assistant,
     "nds-sketch-theme-assistant/duplicate-text-styles"
   )
-  expect(violations[0].message).toBe("• 'title' has a duplicate text style")
+  expect(violations[0].message).toBe("'title' has a duplicate text style")
   expect(violations).toHaveLength(1)
 })
 
@@ -29,7 +29,7 @@ test('Duplicate symbols', async () => {
     Assistant,
     "nds-sketch-theme-assistant/duplicate-symbols"
   )
-  expect(violations[0].message).toBe("• 'icon' has a duplicate symbol")
+  expect(violations[0].message).toBe("'icon' has a duplicate symbol")
   expect(violations).toHaveLength(1)
 })
 
@@ -39,7 +39,7 @@ test('Default layer styles', async () => {
     Assistant,
     "nds-sketch-theme-assistant/default-layer-styles"
   )
-  expect(violations[0].message).toBe("• 'background' is missing a default layer style")
+  expect(violations[0].message).toBe("'background' is missing a default layer style")
   expect(violations).toHaveLength(1)
 })
 
@@ -49,7 +49,7 @@ test('Default text styles', async () => {
     Assistant,
     "nds-sketch-theme-assistant/default-text-styles"
   )
-  expect(violations[0].message).toBe("• 'title' is missing a default text style")
+  expect(violations[0].message).toBe("'title' is missing a default text style")
   expect(violations).toHaveLength(1)
 })
 
@@ -59,7 +59,7 @@ test('Default symbols', async () => {
     Assistant,
     "nds-sketch-theme-assistant/default-symbols"
   )
-  expect(violations[0].message).toBe("• 'icon' is missing a default symbol")
+  expect(violations[0].message).toBe("'icon' is missing a default symbol")
   expect(violations).toHaveLength(1)
 })
 
