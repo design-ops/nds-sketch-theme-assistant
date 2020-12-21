@@ -11,7 +11,6 @@ export const defaultTextStyles: RuleDefinition = {
 
     var tokens: Array<Tokens> = [];
     var tokenParts: Array<string> = [];
-    // var allTokens: Array<Tokens> = [];
     var defaultTokens: Array<Tokens> = [];
 
     for (const style of context.utils.objects.sharedStyle) {
@@ -30,13 +29,6 @@ export const defaultTextStyles: RuleDefinition = {
       }
     }
     defaultTokens = (tokens.filter((element) => element.default == true));
-    // tokens.filter(function(item){
-    //   var i = allTokens.findIndex(x => x.token == item.token);
-    //   if(i <= -1){
-    //     allTokens.push({token: item.token, path: item.path, default: item.default});
-    //   }
-    //   return null;
-    // });
 
     for (const token of tokens) {
       var existingElement = defaultTokens.find((element) => element.token == token.token);
