@@ -1,10 +1,11 @@
-import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
+import { RuleDefinition, SketchFileObject } from '@sketch-hq/sketch-assistant-types'
 
 export const duplicateTextStyles: RuleDefinition = {
   rule: async (context) => {
     interface Duplicate {
       name: string
       number: number
+      object: SketchFileObject
     }
 
     var duplicates: Array<Duplicate> = [];
@@ -16,14 +17,14 @@ export const duplicateTextStyles: RuleDefinition = {
         if (existingElement != null)
           existingElement.number++;
         else {
-          duplicates.push({ name: style.name, number: 1 });
+          duplicates.push({ name: style.name, number: 1, object:style });
         }
       }
     }
 
     totalDuplicates = (duplicates.filter((element) => element.number > 1));
 
-    totalDuplicates.forEach(element => context.utils.report('• \'' + element.name + '\' has a duplicate text style'));
+    totalDuplicates.forEach(element => context.utils.report('\'' + element.name + '\' has a duplicate text style', element.object));
 
   },
   name: 'nds-sketch-theme-assistant/duplicate-text-styles',

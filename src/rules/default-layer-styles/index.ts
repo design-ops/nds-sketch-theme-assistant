@@ -1,4 +1,4 @@
-import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
+import { RuleDefinition, SketchFileObject } from '@sketch-hq/sketch-assistant-types'
 
 export const defaultLayerStyles: RuleDefinition = {
   rule: async (context) => {
@@ -7,11 +7,11 @@ export const defaultLayerStyles: RuleDefinition = {
       token: string
       path: string
       default: boolean
+      object: SketchFileObject
     }
 
     var tokens: Array<Tokens> = [];
     var tokenParts: Array<string> = [];
-    // var allTokens: Array<Tokens> = [];
     var defaultTokens: Array<Tokens> = [];
 
     for (const style of context.utils.objects.sharedStyle) {
@@ -22,26 +22,19 @@ export const defaultLayerStyles: RuleDefinition = {
         var tokenPath = tokenParts.pop();
         tokenPath = tokenParts.join('/');
         if (tokenParts.length > 0) {
-          tokens.push({ token: tokenName, path: tokenPath, default: false });
+          tokens.push({ token: tokenName, path: tokenPath, default: false, object:style });
         } else {
-          tokens.push({ token: tokenName, path: tokenPath, default: true });
+          tokens.push({ token: tokenName, path: tokenPath, default: true, object:style });
         }
 
       }
     }
     defaultTokens = (tokens.filter((element) => element.default == true));
-    // tokens.filter(function(item){
-    //   var i = allTokens.findIndex(x => x.token == item.token);
-    //   if(i <= -1){
-    //     allTokens.push({token: item.token, path: item.path, default: item.default});
-    //   }
-    //   return null;
-    // });
 
     for (const token of tokens) {
       var existingElement = defaultTokens.find((element) => element.token == token.token);
       if (existingElement == null) {
-        context.utils.report('• \'' + token.token + '\' is missing a default layer style');
+        context.utils.report('\'' + token.token + '\' is missing a default layer style', token.object);
       }
 
     }

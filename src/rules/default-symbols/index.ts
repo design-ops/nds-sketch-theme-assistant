@@ -1,4 +1,4 @@
-import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
+import { RuleDefinition, SketchFileObject } from '@sketch-hq/sketch-assistant-types'
 
 export const defaultSymbols: RuleDefinition = {
   rule: async (context) => {
@@ -7,7 +7,7 @@ export const defaultSymbols: RuleDefinition = {
       token: string
       path: string
       default: boolean
-      obj: object
+      object: SketchFileObject
     }
 
     var tokens: Array<Tokens> = [];
@@ -22,9 +22,9 @@ export const defaultSymbols: RuleDefinition = {
         var tokenPath = tokenParts.pop();
         tokenPath = tokenParts.join('/');
         if (tokenParts.length > 0) {
-          tokens.push({ token: tokenName, path: tokenPath, default: false, obj: symbol });
+          tokens.push({ token: tokenName, path: tokenPath, default: false, object:symbol });
         } else {
-          tokens.push({ token: tokenName, path: tokenPath, default: true, obj: symbol });
+          tokens.push({ token: tokenName, path: tokenPath, default: true, object:symbol });
         }
       }
     }
@@ -33,7 +33,7 @@ export const defaultSymbols: RuleDefinition = {
     for (const token of tokens) {
       var existingElement = defaultTokens.find((element) => element.token == token.token);
       if (existingElement == null) {
-        context.utils.report('• \'' + token.token + '\' is missing a default symbol');
+        context.utils.report('\'' + token.token + '\' is missing a default symbol', token.object);
       }
 
     }

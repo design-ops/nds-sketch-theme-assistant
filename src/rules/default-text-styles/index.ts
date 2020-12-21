@@ -1,4 +1,4 @@
-import { RuleDefinition } from '@sketch-hq/sketch-assistant-types'
+import { RuleDefinition, SketchFileObject } from '@sketch-hq/sketch-assistant-types'
 
 export const defaultTextStyles: RuleDefinition = {
   rule: async (context) => {
@@ -7,6 +7,7 @@ export const defaultTextStyles: RuleDefinition = {
       token: string
       path: string
       default: boolean
+      object: SketchFileObject
     }
 
     var tokens: Array<Tokens> = [];
@@ -21,9 +22,9 @@ export const defaultTextStyles: RuleDefinition = {
         var tokenPath = tokenParts.pop();
         tokenPath = tokenParts.join('/');
         if (tokenParts.length > 0) {
-          tokens.push({ token: tokenName, path: tokenPath, default: false });
+          tokens.push({ token: tokenName, path: tokenPath, default: false, object:style });
         } else {
-          tokens.push({ token: tokenName, path: tokenPath, default: true });
+          tokens.push({ token: tokenName, path: tokenPath, default: true, object:style });
         }
 
       }
@@ -33,7 +34,7 @@ export const defaultTextStyles: RuleDefinition = {
     for (const token of tokens) {
       var existingElement = defaultTokens.find((element) => element.token == token.token);
       if (existingElement == null) {
-        context.utils.report('• \'' + token.token + '\' is missing a default text style');
+        context.utils.report('\'' + token.token + '\' is missing a default text style', token.object);
       }
 
     }
