@@ -19,13 +19,6 @@ This Sketch Assistant is to be used when designing theme files for the Natural D
 * [Embedded fonts](./src/rules/embed-fonts)
 
 
-
-
-### UI Components
-1. 🛑 Error: Name of the layer must match the style
-1. 🛑 Error: Component names must begin with `_`
-
-
 ### UI Layout
 1. 🛑 Error: Artboard names must follow the pattern `Section Name - Description`
 1. 🛑 Error: Local layer styles not permitted
