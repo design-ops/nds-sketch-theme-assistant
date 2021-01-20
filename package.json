@@ -6,7 +6,7 @@
   "sketch": "dist/sketch.js",
   "license": "MIT",
   "sketch-assistant": {
-    "title": "NDS Sketch theme assistant",
+    "title": "NDS Sketch Theme assistant",
     "description": "Sketch Theme file assistant for use with the Natural Design System",
     "icon": ""
   },
