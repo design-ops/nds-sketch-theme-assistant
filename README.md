@@ -2,6 +2,12 @@
 
 This Sketch Assistant is to be used when designing theme files for the Natural Design System. The Assistant performs the following checks on your theme file:
 
+## Installation
+
+👉 To install automatically, **copy and paste** the following link into a new browser tab:
+
+`sketch://add-assistant?url=https://github.com/design-ops/nds-sketch-theme-assistant/releases/download/v1.0.0/nds-sketch-theme-assistant-1.0.0.tgz`
+
 ## Rules
 
 * [Duplicate symbols](./src/rules/duplicate-symbols)
