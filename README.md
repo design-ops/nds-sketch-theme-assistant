@@ -23,5 +23,3 @@ This Sketch Assistant is to be used when designing theme files for the Natural D
 👉 To install automatically, **copy and paste** the following link into a new browser tab:
 
 `sketch://add-assistant?url=https://github.com/design-ops/nds-sketch-theme-assistant/releases/download/v1.0.0/nds-sketch-theme-assistant-1.0.0.tgz`
-
-Or [Click here to add directly to your Sketch document](sketch://add-assistant?url=https%3A%2F%2Fgithub.com%2Fdesign-ops%2Fnds-sketch-theme-assistant%2Freleases%2Fdownload%2Fv1.0.0%2Fnds-sketch-theme-assistant-1.0.0.tgz)
