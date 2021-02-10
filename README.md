@@ -20,6 +20,8 @@ This Sketch Assistant is to be used when designing theme files for the Natural D
 
 ## Installation
 
-👉 To install automatically, **copy and paste** the following link into a new browser tab:
+:gem: [Click here to install automatically](http://j76.me/me6d)
+
+:point_right: or **copy & paste** the following link into a new browser:
 
 `sketch://add-assistant?url=https://github.com/design-ops/nds-sketch-theme-assistant/releases/download/v1.0.0/nds-sketch-theme-assistant-1.0.0.tgz`
