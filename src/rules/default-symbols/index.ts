@@ -31,7 +31,7 @@ export const defaultSymbols: RuleDefinition = {
     defaultTokens = (tokens.filter((element) => element.default == true));
 
     for (const token of tokens) {
-      var existingElement = defaultTokens.find((element) => element.token == token.token);
+      var existingElement = defaultTokens.find((element) => element.token.toLowerCase() == token.token.toLowerCase());
       if (existingElement == null) {
         context.utils.report('\'' + token.token + '\' is missing a default symbol', token.object);
       }
