@@ -12,7 +12,7 @@ export const duplicateSymbols: RuleDefinition = {
     var totalDuplicates: Array<Duplicate> = [];
 
     for (const symbol of context.utils.objects.symbolMaster) {
-      var existingElement = duplicates.find((element) => element.name == symbol.name);
+      var existingElement = duplicates.find((element) => element.name.toLowerCase() == symbol.name.toLowerCase());
       if (existingElement != null)
         existingElement.number++;
       else

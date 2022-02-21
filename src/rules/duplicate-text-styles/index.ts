@@ -13,7 +13,7 @@ export const duplicateTextStyles: RuleDefinition = {
 
     for (const style of context.utils.objects.sharedStyle) {
       if (style.value.textStyle != undefined) {
-        var existingElement = duplicates.find((element) => element.name == style.name)
+        var existingElement = duplicates.find((element) => element.name.toLowerCase() == style.name.toLowerCase())
         if (existingElement != null)
           existingElement.number++;
         else {
