@@ -14,11 +14,17 @@ export const modifierStructure: RuleDefinition = {
           context.utils.report('\'' + symbol.name + '\' modifier requires a single layer', symbol);
         }
 
+        if (numberOfLayers == 1 ) {
+          if (symbol.layers[0].sharedStyleID == null) {
+            context.utils.report('\'' + symbol.name + '/' + symbol.layers[0].name + '\' layer is required to have a style attached to it', symbol);
+          }
+        }
+
       }
     }
 
   },
   name: 'nds-sketch-theme-assistant/modifier-structure',
   title: 'Modifier Structure',
-  description: 'Reports if a modifier has more than one or less than one layer.',
+  description: 'Reports if a modifier has more than one or less than one layer. Also checks if the single layer has a Shared Style.',
 }
