@@ -70,8 +70,9 @@ test('Modifier structure', async () => {
     "nds-sketch-theme-assistant/modifier-structure"
   )
   expect(violations[0].message).toBe("'background --radius' modifier has too many (2) layers")
-  expect(violations[1].message).toBe("'header/background --radius' modifier requires a single layer")
-  expect(violations).toHaveLength(2)
+  expect(violations[1].message).toBe("'button/background --radius/background' layer is required to have a style attached to it")
+  expect(violations[2].message).toBe("'header/background --radius' modifier requires a single layer")
+  expect(violations).toHaveLength(3)
 })
 
 test('Sync layer styles', async () => {
