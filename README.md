@@ -24,4 +24,4 @@ This Sketch Assistant is to be used when designing theme files for the Natural D
 
 :point_right: or **copy & paste** the following link into a new browser:
 
-`sketch://add-assistant?url=https://github.com/design-ops/nds-sketch-theme-assistant/releases/download/v1.0.0/nds-sketch-theme-assistant-1.0.0.tgz`
+`sketch://add-assistant?url=https://github.com/design-ops/nds-sketch-theme-assistant/releases/download/v1.0.2/nds-sketch-theme-assistant-1.0.2.tgz`
